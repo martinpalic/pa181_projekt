@@ -44,8 +44,7 @@ public class EkonomikaCenyBytovDaoImpl   extends BaseDaoImpl<EkonomikaCenyBytov,
         int weekNumber = now.get(weekFields.weekOfWeekBasedYear()) - 1;
 
         return super.queryBuilder().selectRaw("bytm2")
-                .where().ge("rok", now.getYear())
-                .and().ge("tyzden", weekNumber)
+                .where().eq("rok", now.getYear())
                 .and().eq("okres", okres)
                 .queryRaw().getResults().get(0)[0];
     }
